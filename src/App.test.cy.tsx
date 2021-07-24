@@ -7,4 +7,9 @@ describe(`<App />`, () => {
     mount(<App />);
     cy.get("[data-testid=app-wrapper]").should("exist");
   });
+
+  it("shouldyou can mount anything", () => {
+    mount(<button data-testid="moo">moo</button>);
+    cy.get("[data-testid=moo]").should("exist");
+  });
 });
