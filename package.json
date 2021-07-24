@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.24",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
@@ -19,7 +19,15 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "npm run test:jest:run; npm run test:cy:run",
+    "test:jest": "npm run test:jest:run",
+    "test:jest:run": "cross-env NODE_ENV=test jest",
+    "test:jest:coverage": "cross-env NODE_ENV=test npm run test:jest:run -- --coverage",
+    "test:jest:watch": "npm run test:jest:run -- --watch",
+    "test:cy": "npm run test:cy:run",
+    "test:cy:run": "cross-env NODE_ENV=test cypress run-ct",
+    "test:cy:coverage": "cross-env NODE_ENV=test cypress run-ct --env coverage=true",
+    "test:cy:watch": "cross-env NODE_ENV=test cypress open-ct --browser electron",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,5 +47,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.9.6",
+    "@cypress/react": "^5.9.2",
+    "@cypress/webpack-dev-server": "^1.4.0",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.3.2",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "cypress": "^8.0.0",
+    "local-cypress": "^1.2.2",
+    "ts-jest": "^27.0.4"
   }
 }
